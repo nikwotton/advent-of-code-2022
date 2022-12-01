@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
+
 plugins {
     kotlin("jvm") version "1.7.22"
 }
@@ -15,5 +17,6 @@ tasks {
 
     wrapper {
         gradleVersion = "7.6"
+        distributionType = ALL
     }
 }
