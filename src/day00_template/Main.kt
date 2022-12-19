@@ -2,7 +2,7 @@ package day00_template
 
 import java.io.File
 
-const val workingDir = "src/day00_template"
+val workingDir = "src/${object {}.javaClass.`package`.name}"
 
 fun main() {
     val sample = File("$workingDir/sample.txt")
