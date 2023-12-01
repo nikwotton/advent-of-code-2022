@@ -7,38 +7,32 @@ const val workingDir = "src/day01"
 fun main() {
     val sample = File("$workingDir/sample.txt")
     val input1 = File("$workingDir/input_1.txt")
+    val sample2 = File("$workingDir/sample_2.txt")
     runStep1(sample)
     runStep1(input1)
-    runStep2(sample)
+    runStep2(sample2)
     runStep2(input1)
 }
 
-fun runStep1(input: File) {
-    val elves = mutableListOf<Int>()
-    var currentElf = 0
-    input.readLines().forEach {
-        if (it.isEmpty()) {
-            elves.add(currentElf)
-            currentElf = 0
-        } else {
-            currentElf += it.toInt()
-        }
-    }
-    elves.add(currentElf)
-    println("Max is: ${elves.max()}")
-}
+fun runStep1(input: File) =
+    input.readLines().map { it.filter { it.isDigit() } }.map { it.first().toString() + it.last() }.sumOf { it.toInt() }.let { println(it) }
 
 fun runStep2(input: File) {
-    val elves = mutableListOf<Int>()
-    var currentElf = 0
-    input.readLines().forEach {
-        if (it.isEmpty()) {
-            elves.add(currentElf)
-            currentElf = 0
-        } else {
-            currentElf += it.toInt()
+    input.readLines()
+        .map {
+            it.replace("one", "on1ne")
+                .replace("two", "tw2wo")
+                .replace("three", "thre3hree")
+                .replace("four", "fou4our")
+                .replace("five", "fiv5ive")
+                .replace("six", "si6ix")
+                .replace("seven", "seve7even")
+                .replace("eight", "eigh8ight")
+                .replace("nine", "nin9ine")
         }
-    }
-    elves.add(currentElf)
-    println("Max is: ${elves.sortedDescending().take(3).sum()}")
+        .map { it.filter { it.isDigit() } }
+        .map { it.first().toString() + it.last() }
+        .sumOf { it.toInt() }
+        .let { println(it) }
+
 }
