@@ -7,9 +7,9 @@ val workingDir = "src/${object {}.javaClass.`package`.name}"
 fun main() {
     val sample = File("$workingDir/sample.txt")
     val input1 = File("$workingDir/input_1.txt")
-    assert(runStep1(sample) == TODO())
+    assert(runStep1(sample) == "TODO(step1)")
     println("Step 1 answer: ${runStep1(input1)}")
-    assert(runStep2(sample) == TODO())
+    assert(runStep2(sample) == "TODO(step2)")
     println("Step 2 answer: ${runStep2(input1)}")
 }
 
