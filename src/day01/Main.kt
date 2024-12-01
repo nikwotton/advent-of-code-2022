@@ -7,32 +7,22 @@ const val workingDir = "src/day01"
 fun main() {
     val sample = File("$workingDir/sample.txt")
     val input1 = File("$workingDir/input_1.txt")
-    val sample2 = File("$workingDir/sample_2.txt")
     runStep1(sample)
     runStep1(input1)
-    runStep2(sample2)
+    runStep2(sample)
     runStep2(input1)
 }
 
-fun runStep1(input: File) =
-    input.readLines().map { it.filter { it.isDigit() } }.map { it.first().toString() + it.last() }.sumOf { it.toInt() }.let { println(it) }
+fun runStep1(input: File) {
+    val list1 = input.readLines().map { it.split("   ")[0].toInt() }.sorted()
+    val list2 = input.readLines().map { it.split("   ")[1].toInt() }.sorted()
+    println(list1.indices.map { Math.abs(list1[it] - list2[it]) }.sum())
+}
 
 fun runStep2(input: File) {
-    input.readLines()
-        .map {
-            it.replace("one", "on1ne")
-                .replace("two", "tw2wo")
-                .replace("three", "thre3hree")
-                .replace("four", "fou4our")
-                .replace("five", "fiv5ive")
-                .replace("six", "si6ix")
-                .replace("seven", "seve7even")
-                .replace("eight", "eigh8ight")
-                .replace("nine", "nin9ine")
-        }
-        .map { it.filter { it.isDigit() } }
-        .map { it.first().toString() + it.last() }
-        .sumOf { it.toInt() }
-        .let { println(it) }
-
+    val list1 = input.readLines().map { it.split("   ")[0].toInt() }
+    val list2 = input.readLines().map { it.split("   ")[1].toInt() }.let { l ->
+        l.toSet().map { it1 -> it1 to l.count{ it == it1 } }.toMap()
+    }
+    println(list1.map { it * (list2[it] ?: 0) }.sum())
 }

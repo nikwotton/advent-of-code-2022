@@ -1,8 +1,8 @@
 import org.gradle.api.tasks.wrapper.Wrapper.DistributionType.ALL
 
 plugins {
-    kotlin("jvm") version "1.9.21"
-    kotlin("plugin.serialization") version "1.9.21"
+    kotlin("jvm") version "2.1.0"
+    kotlin("plugin.serialization") version "2.1.0"
 }
 
 repositories {
@@ -14,13 +14,13 @@ tasks {
         main {
             java.srcDirs("src")
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
             }
         }
     }
 
     wrapper {
-        gradleVersion = "8.5"
+        gradleVersion = "8.11.1"
         distributionType = ALL
     }
 }
