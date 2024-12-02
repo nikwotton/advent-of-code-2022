@@ -1,4 +1,4 @@
-package day00_template
+package day03
 
 import java.io.File
 
